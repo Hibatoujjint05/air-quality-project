@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: airquality-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: processor
+        image: airqualityacr.azurecr.io/airquality-app:latest
+        env:
+        - name: AZURE_CONN_STR
+          valueFrom:
+            secretKeyRef:
+              name: azure-secret
+              key: conn-str
+      restartPolicy: Never
