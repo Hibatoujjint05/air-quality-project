@@ -21,7 +21,8 @@ st.title("🌍 Air Quality Dashboard (Azure Pipeline)")
 # ─────────────────────────────
 # LOAD DATA FROM AZURE
 # ─────────────────────────────
-@st.cache_data
+# Cache expires every 300 seconds (5 mins) — reloads fresh data from Azure automatically
+@st.cache_data(ttl=300)
 def load_data():
     conn_str = os.environ.get("AZURE_CONN_STR", "")
 
@@ -167,4 +168,4 @@ st.dataframe(df_filtered, use_container_width=True)
 # FOOTER
 # ─────────────────────────────
 st.markdown("---")
-st.caption("Pipeline: Azure → Docker → Kubernetes → Jenkins")
+st.caption("Pipeline: Azure → Docker → Kubernetes → Jenkins | Auto-refreshes every 5 minutes")
