@@ -16,7 +16,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("🌍 Air Quality Dashboard (Azure Pipeline)")
+st.title("🌍 Air Quality Dashboard (Azure Pipeline) ✅ LIVE DEMO")
 
 # ─────────────────────────────
 # LOAD DATA FROM AZURE
